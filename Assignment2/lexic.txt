@@ -1,0 +1,29 @@
+Alphabet:
+a. Upper (A-Z) and lower case letters (a-z) of the English alphabet
+b. Underline character '_';
+c. Decimal digits (0-9);
+1.Lexic:
+a. Special symbols, representing:
+- operators
+	+, -, *, /,%, = , <, >, <=, >=, !=, ==
+- separators 
+	() [ ] { }  ;  , space
+- reserved words:
+	int, string, const, char, if, else, while, return, begin, end 
+           b. identifiers
+  A sequence of letters and digits (max length 256), such that the first character is a letter; the rule is:
+    identifier = letter | letter{letter}{digit}
+    letter = "A" | "B" |...| "Z "|"a"|…|"z"
+    nzrodigit = "1" | ... | "9"
+    digit = "0" | nzrodigit
+           c. constants
+1.	integer – 0 or a sequence of digits, signed or unsigned, not starting with zero:
+	constnb = "0" | ["-"] nzrodigit {digit}
+2.	character – a letter or a digit between ' '
+	char =  ' letter ' | ' digit '
+	constchar =  "'"char "'"
+3.	string – a sequence of characters between " "
+	string = {char}
+	conststring =  """string"""
+
+      
