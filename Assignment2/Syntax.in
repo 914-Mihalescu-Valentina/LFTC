@@ -1,0 +1,19 @@
+ The words - predefined tokens are specified between " and ":
+Syntactical rules: (file Syntax.in)
+program ::= "begin" compound_stmt "end"
+stmt ::= {decl_stmt | assignment_stmt |  if_stmt | while_stmt | for_stmt | return_stmt | io_stmt}
+simple_type ::= "int" | "char" | "string"
+decl_stmt ::= simple_type identifier | array_decl 
+array_decl ::= simple_type  identifier "[" constnb "]"
+comp_stmt ::= "{" stmt_list "}"
+stmt_list ::= stmt | stmt ";" stmt_list
+assigment_stmt ::= identifier "=" expression
+expression ::= expression "+" term | expression "-" term | term 
+term ::= term "*" factor | term "/" factor | factor
+factor ::= "(" expression ")" | identifier | constnb
+io_stmt ::= "read" | "write" "(" identifier ")" | "write" constnb |
+constchar | conststring
+if_stmt ::= "if" condition "{" stmt_list "}" "else" "{" stmt_list "}"
+while_stmt ::= "while" condition "{" stmt_list "}"
+condition ::= expression relation expression
+relation ::= "<" | "<=" | "=" | "!=" | ">=" | ">"
