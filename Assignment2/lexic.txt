@@ -18,7 +18,7 @@ a. Special symbols, representing:
     digit = "0" | nzrodigit
            c. constants
 1.	integer – 0 or a sequence of digits, signed or unsigned, not starting with zero:
-	constnb = "0" | ["-"] nzrodigit {digit}
+	constnb = "0" | ["+"|"-"] nzrodigit {digit}
 2.	character – a letter or a digit between ' '
 	char =  ' letter ' | ' digit '
 	constchar =  "'"char "'"
