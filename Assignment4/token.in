@@ -1,0 +1,3 @@
+reserved:['read','write','if','else','while','int','string','char','return','begin','end','function','for']
+separator:['','(',')',':=','{','}',',';']
+operator:['+','-','*','/','%','=','==','!=','>=','<=','<','>']

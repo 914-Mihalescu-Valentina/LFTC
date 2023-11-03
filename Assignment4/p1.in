@@ -1,0 +1,6 @@
+function p1(n):=
+  i=2
+  if(n==i):=
+    return 1
+  i=i+1
+  return p1(n)
