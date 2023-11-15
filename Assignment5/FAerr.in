@@ -1,0 +1,8 @@
+states p q r d
+alphabet a b
+transition z a q
+transition p b q
+transition q b r
+transition p a r
+initial p
+final z

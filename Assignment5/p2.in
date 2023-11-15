@@ -1,0 +1,4 @@
+function p2(a,b):=
+  if(a==b):=
+    return b
+  return p2(b%a,a)
