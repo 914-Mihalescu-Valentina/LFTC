@@ -1,0 +1,16 @@
+nonterminals = ["S", "A"]
+terminals = ["a", "b", "c"]
+start = "S"
+
+[[rules]]
+nonterminal = "S"
+productions = [
+    "a A",
+]
+
+[[rules]]
+nonterminal = "A"
+productions = [
+    "b A",
+    "c",
+]
