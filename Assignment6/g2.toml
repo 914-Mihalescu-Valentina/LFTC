@@ -1,0 +1,250 @@
+nonterminals = [
+    "terminal",
+    "assignment_op",
+    "arithmetic_op",
+    "logical_op",
+    "relational_op",
+    "basic_type",
+    "array_type",
+    "type",
+    "expression_op",
+    "expression",
+    "condition",
+    "var_declaration",
+    "const_declaration",
+    "assignment_stmt",
+    "if_stmt",
+    "while_stmt",
+    "flow_stmt",
+    "read_stmt",
+    "write_stmt",
+    "io_stmt",
+    "return_stmt",
+    "stmt",
+    "stmt_list",
+    "stmt_block",
+    "start",
+]
+terminals = [
+    "ID",
+    "INT",
+    "STR",
+    "_",
+	"+",
+	"-",
+	"*",
+	"/",
+	"%",
+	"=",
+	"==",
+	"!=",
+	"!",
+	"&&",
+	"||",
+	"<",
+	">",
+	"<=",
+	">=",
+	"(",
+	")",
+	"[",
+	"]",
+	"{",
+	"}",
+	":",
+	";",
+	",",
+	".",
+	"->",
+	"\"",
+	"int",
+	"str",
+	"var",
+	"const",
+	"if",
+	"else",
+	"while",
+	"read",
+	"write",
+	"fn",
+	"return",
+]
+start = "start"
+
+
+[[rules]]
+nonterminal = "terminal"
+productions = [
+    ";",
+]
+
+[[rules]]
+nonterminal = "assignment_op"
+productions = [
+    "=",
+]
+
+[[rules]]
+nonterminal = "arithmetic_op"
+productions = [
+    "+",
+    "-",
+    "*",
+    "/",
+    "%",
+]
+
+[[rules]]
+nonterminal = "logical_op"
+productions = [
+    "!",
+    "&&",
+    "||",
+]
+
+[[rules]]
+nonterminal = "relational_op"
+productions = [
+    "<",
+    ">",
+    "<=",
+    ">=",
+    "==",
+    "!=",
+]
+
+[[rules]]
+nonterminal = "basic_type"
+productions = [
+    "int",
+    "str",
+]
+
+[[rules]]
+nonterminal = "array_type"
+productions = [
+    "[ INT ; type ]",
+]
+
+[[rules]]
+nonterminal = "type"
+productions = [
+    "basic_type",
+    "array_type",
+]
+
+[[rules]]
+nonterminal = "expression_op"
+productions = [
+    "arithmetic_op",
+    "logical_op",
+    "relational_op",
+]
+
+[[rules]]
+nonterminal = "expression"
+productions = [
+    "term",
+    "expression expression_op expression",
+]
+
+[[rules]]
+nonterminal = "condition"
+productions = [
+    "expression",
+]
+
+[[rules]]
+nonterminal = "var_declaration"
+productions = [
+    "var ID : type",
+]
+
+[[rules]]
+nonterminal = "const_declaration"
+productions = [
+    "const ID : type",
+]
+
+[[rules]]
+nonterminal = "assignment_stmt"
+productions = [
+    "ID assignment_op expression",
+]
+
+[[rules]]
+nonterminal = "if_stmt"
+productions = [
+    "if ( condition ) stmt_block",
+    "if ( condition ) stmt_block else stmt_block",
+]
+
+[[rules]]
+nonterminal = "while_stmt"
+productions = [
+    "while ( condition ) stmt_block",
+]
+
+[[rules]]
+nonterminal = "flow_stmt"
+productions = [
+    "if_stmt",
+    "while_stmt",
+]
+
+[[rules]]
+nonterminal = "read_stmt"
+productions = [
+    "read ID",
+]
+
+[[rules]]
+nonterminal = "write_stmt"
+productions = [
+    "write expression",
+]
+
+[[rules]]
+nonterminal = "io_stmt"
+productions = [
+    "read_stmt",
+    "write_stmt",
+]
+
+[[rules]]
+nonterminal = "return_stmt"
+productions = [
+    "return INT",
+    "return STR",
+]
+
+[[rules]]
+nonterminal = "stmt"
+productions = [
+    "var_declaration terminator",
+    "const_declaration terminator",
+    "assignment_stmt terminator",
+    "io_stmt terminator",
+    "return_stmt terminator",
+    "flow_stmt terminator",
+]
+
+[[rules]]
+nonterminal = "stmt_list"
+productions = [
+    "stmt",
+    "stmt stmt_list",
+]
+
+[[rules]]
+nonterminal = "stmt_block"
+productions = [
+    "{ }",
+    "{ stmt_list }",
+]
+
+[[rules]]
+nonterminal = "start"
+productions = [
+    "fn ID ( ) -> int stmt_block",
+]
