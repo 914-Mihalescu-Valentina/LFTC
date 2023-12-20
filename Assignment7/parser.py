@@ -31,6 +31,8 @@ class Parser:
         # generate parsing table
         self.__table = self._generate_parsing_table(canonical_collection)
 
+
+        #TODO: create a function for debug code
         # # print canonical collection to see if it works :)
         # for state in canonical_collection:
         #     items_str = []
@@ -275,6 +277,9 @@ class Parser:
                     else:
                         # shift-reduce error
                         raise GrammarError(f"action shift ({item.production[item.current_symbol_idx]}, {next_state}) found for state {state}, but it already has {type(table[state]).__name__.lower()} action assigned")
+                        
+                        #TODO:could erase code that is not used anymore
+
                         # print(f"action shift ({item.production[item.current_symbol_idx]}, {next_state}) found for state {state}, but it already has {type(table[state]).__name__.lower()} action assigned")
 
         return table
