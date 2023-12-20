@@ -1,0 +1,92 @@
+# Grammar Syntax:
+# The grammar uses the EBNF notation with few changes.
+#
+# rule_name: expression
+#   Definition of a rule
+# e1 e2
+#   Match e1, then match e2
+# e1 | e2
+#   Match e1 or e2
+#   The first alternative can also appear on the next line for formatting purposes. In that case, "|" must be used before the first alternative, like so:
+#       rule_name:
+#           | e1
+#           | e2
+# [ ... ]
+#   optional (none or once)
+# { ... }
+#   repetition (none or more)
+# ( ... )
+#   group
+# " ... "
+#   terminal string
+# ' ... '
+#   terminal string
+# (* ... *)
+#   Multiline comment
+# #
+#   Single line comment
+#
+
+# STARTING RULES
+# ==============
+start: "fn" identifier "(" ")" "->" "int" stmt_block
+
+# GENERAL RULES
+# =============
+terminator: ";"
+
+assignment_op: "="
+arithmetic_op: "+" | "-" | "*" | "/" | "%"
+logical_op: "!" | "&&" | "||"
+relational_op: "<" | ">" | "<=" | ">=" | "==" | "!="
+
+basic_type:
+    | "int"
+    | "str"
+array_type: "[" int ";" type "]"
+
+type:
+    | basic_type
+    | array_type
+
+term:
+    | identifier
+    | int
+    | str
+expression_op:
+    | arithmetic_op
+    | logical_op
+    | relational_op
+expression: term { expression_op term }
+
+condition: expression
+
+var_declaration: "var" identifier ":" type
+const_declaration: "const" identifier ":" type
+assignment_stmt: identifier assignment_op expression
+
+# flow statements
+if_stmt: "if" "(" condition ")" stmt_block [ "else" stmt_block ]
+while_stmt: "while" "(" condition ")" stmt_block
+flow_stmt:
+    | if_stmt
+    | while_stmt
+
+# io statements
+read_stmt: "read" identifier
+write_stmt: "write" expression
+io_stmt:
+    | read_stmt
+    | write_stmt
+
+return_stmt: "return" ( int | str )
+
+stmt:
+    | var_declaration terminator
+    | const_declaration terminator
+    | assignment_stmt terminator
+    | io_stmt terminator
+    | return_stmt terminator
+    | flow_stmt
+
+stmt_block: "{" { stmt } "}"
